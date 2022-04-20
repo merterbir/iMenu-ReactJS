@@ -1,28 +1,51 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ApiContext } from "../contexts/ApiContext";
+import { SuperVisibleContext } from "../contexts/SuperVisibleContext";
 
 
 
 
 
 const SuperAdminFirmaDuzenle = () => {
+    const [UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList, silinecekIdFirma, setsilinecekIdFirma, firmaSil, firmaAyrinti, FirmaAyrinti, setFirmaAyrinti] = useContext(ApiContext);
+
+    const duzenleClick = (e) => {
+        e.preventDefault();
+    }
+    const checkboxDegisti = (e) => {
+        e.preventDefault();
+        
+    }
     return (
         <div id="content" className="p-4 p-md-5 pt-5">
-            <form className="modal-content animate" action="/action_page.php" method="post">
+
+            <form>
+
                 <div className="container">
-                <label htmlFor="uname"><b>Düzenlenecek Firmayı Seçiniz</b></label>
-                <select style={{height:50,width:1110}} name="Firmalar" id="Firmalar" required>
-                        <option value="Afirması">A Firması</option>
-                        <option value="Bfirması">B Firması</option>
-                        <option value="Cfirması">C Firması</option>
-                        <option value="Dfirması">D Firması</option>
-                    </select>
-                    <br/><br/>
+                    <h3>Firma Düzenle</h3>
+                    <br />
+                    <b>Eski Firma Adı: </b> <a>{FirmaAyrinti.name} </a> <b>Eski Masa Sayısı: </b> <a>{FirmaAyrinti.deskCount} </a>
+                    <b>Eski Aktif Durum: </b> <a>{FirmaAyrinti.isActive?"True":"False"} </a> <b>Eski Silinmiş Durum: </b> <a>{FirmaAyrinti.isDeleted?"True":"False"}</a>
+                    <br></br>
+                    
+                    <br></br>
                     <label htmlFor="uname"><b>Yeni Firma Adı</b></label>
-                    <input type="text" placeholder="Kategori Adı Giriniz" name="uname" required />
+                    <input defaultValue={FirmaAyrinti.name} type="text" placeholder="Kategori Adı Giriniz" name="uname" required />
                     <label htmlFor="psw"><b>Yeni Firma Masa Sayısı</b></label>
-                
-                    <input type="text" placeholder="Firma Masa Sayısı Giriniz" name="uname" required />
-                    <button type="submit">Düzenle</button>
+
+                    <input defaultValue={FirmaAyrinti.deskCount} type="text" placeholder="Firma Masa Sayısı Giriniz" name="uname" required />
+                    <div>
+                        <div className="custom-control custom-switch">
+                            <input onChange={checkboxDegisti} type="checkbox" className="custom-control-input" id="customSwitch1" defaultChecked={FirmaAyrinti.isActive}  />
+                            <label className="custom-control-label" htmlFor="customSwitch1">Firma aktiflik durumu:</label>
+                        </div>
+                        <div className="custom-control custom-switch">
+                            <input onChange={checkboxDegisti} type="checkbox" className="custom-control-input" id="customSwitch2" defaultChecked={FirmaAyrinti.isDeleted}/>
+                            <label className="custom-control-label" htmlFor="customSwitch2">Firma silinmişlik durumu:</label>
+                        </div>
+                    </div>
+
+                    <button onClick={duzenleClick} type="submit">Düzenle</button>
                 </div>
             </form>
         </div>

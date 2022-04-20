@@ -3,6 +3,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 
 
+
 export const ApiContext = createContext();
 export const ApiProvider = (props) => {
   const [Token, setToken] = useState("");
@@ -13,39 +14,11 @@ export const ApiProvider = (props) => {
   const [FirmaMSayisi, setFirmaMSayisi] = useState("");
   const [FirmaList, setFirmaList] = useState([]);
   const [silinecekIdFirma,setsilinecekIdFirma] =useState("");
+  const [FirmaAyrinti, setFirmaAyrinti] = useState([]);
   let navigate = useNavigate();
   const cookies = new Cookies();
 
-  /* fetch('https://authenticationcorewebapi20220215151416.azurewebsites.net/login', {
-          method: 'POST',
-          headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              'UserName': UserName,
-              'Password': Password
-          })
-      }).then(function (response) {
-          status = response.status;
-          return response.json();
-      })
-          .then(function (myJson) {
-              if (status == 200) {
-                  
-                  setToken(myJson);
-                  console.log(token);
-                  let path= '/SuperAdmin';
-                  navigate(path);
-              }
-              else{
-                  setpasswordErrorVis(true);
-                  console.log("Yanlış");
-              }
-          }).catch((error) => {
-              setpasswordErrorVis(true);
-          }); */
-
+ 
   const axios = require('axios');
 
 
@@ -141,8 +114,24 @@ export const ApiProvider = (props) => {
         setFirmaList(null);
       });
   }
+  const firmaAyrinti = (id) => {
+    
+    axios.get(url + '/api/Company/'+id)
+      .then(function (response) { 
+        console.log(response.status) 
+        if (response.status === 200) {
+          console.log(response.data)
+          setFirmaAyrinti(response.data);
+        }
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+        setFirmaAyrinti(null);
+      });
+  }  
   return (
-    <ApiContext.Provider value={[UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList,silinecekIdFirma,setsilinecekIdFirma,firmaSil]}>
+    <ApiContext.Provider value={[UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList,silinecekIdFirma,setsilinecekIdFirma,firmaSil,firmaAyrinti,FirmaAyrinti, setFirmaAyrinti]}>
       {props.children}
     </ApiContext.Provider>
 

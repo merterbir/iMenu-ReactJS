@@ -9,6 +9,7 @@ export const SuperVisibleProvider = (props) => {
     const [KategoriEkleVisible, setKategoriEkleVisible] = useState(false);
     const [KategoriSilVisible, setKategoriSilVisible] = useState(false);
     const [KategoriDuzenleVisible, setKategoriDuzenleVisible] = useState(false);
+    const [FirmaAyrintilarVisible, setFirmaAyrintilarVisible] = useState(false);
 
 
     const VisibleAllFalse=()=>{
@@ -18,12 +19,13 @@ export const SuperVisibleProvider = (props) => {
         setKategoriSilVisible(false);
         setKategoriEkleVisible(false);
         setKategoriDuzenleVisible(false);
+        setFirmaAyrintilarVisible(false);
     }
 
    
     return (
         <SuperVisibleContext.Provider value={[VisibleAllFalse,FirmaEkleVisible, setFirmaEkleVisible,FirmaSilVisible, setFirmaSilVisible,FirmaDuzenleVisible, setFirmaDuzenleVisible
-            ,KategoriEkleVisible, setKategoriEkleVisible,KategoriSilVisible, setKategoriSilVisible,KategoriDuzenleVisible, setKategoriDuzenleVisible
+            ,KategoriEkleVisible, setKategoriEkleVisible,KategoriSilVisible, setKategoriSilVisible,KategoriDuzenleVisible, setKategoriDuzenleVisible,FirmaAyrintilarVisible, setFirmaAyrintilarVisible
         ]}>
             {props.children}
         </SuperVisibleContext.Provider>
