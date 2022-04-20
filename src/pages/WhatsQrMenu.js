@@ -1,0 +1,32 @@
+import React from "react";
+
+
+
+const WhatsQrMenu = () => {
+  return (
+<section className="u-clearfix u-block-6180-1" custom-posts-hash="[]" data-style="blank" data-section-properties="{&quot;margin&quot;:&quot;none&quot;,&quot;stretch&quot;:true}" id="carousel_0bda" data-source="fix" data-id={6180} style={{}}>
+  <div className="u-clearfix u-sheet u-valign-middle u-block-6180-12" data-height-lg={600} data-height-md={495} data-height-sm={379} data-height-xs={669} style={{minHeight: 819}}><div className="u-clearfix u-layout-wrap u-block-control u-block-6180-3" style={{width: 1140, marginTop: 60, marginBottom: 60, marginLeft: 'auto', marginRight: 'auto'}} data-layout-wrap-id={4} data-block={83}><div className="u-layout" style={{}}>  <div className="u-layout-row" style={{}}><div className="u-container-style u-layout-cell u-left-cell u-size-30 u-block-control ui-draggable ui-droppable u-block-6180-4" style={{minHeight: 699}} data-cell-id={15} data-column-id={10} data-block={84}><div className="u-container-layout u-block-6180-5" style={{paddingTop: 30, paddingBottom: 30, paddingLeft: 0, paddingRight: 0}} data-container-layout-dom={20}><h1 className="u-text u-block-control u-block-6180-8" style={{fontSize: '3.75rem', fontWeight: 400, marginTop: 54, marginRight: 0, marginBottom: 0, marginLeft: 20}} data-block={85} data-block-type="Text">​<b>Qr Menü Sistemleri Özellikleri</b></h1><ul className="u-custom-font u-custom-list u-text u-block-control u-block-6180-9" style={{lineHeight: '1.8', fontSize: '1.125rem', fontFamily: '"Advent Pro"', marginTop: 31, marginLeft: 30, marginRight: 30, marginBottom: 0}} data-block={86} data-block-type="Text"><li>​​<div className="u-list-icon u-text-palette-2-base u-block-6180-17" style={{}}><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" xmlSpace="preserve" className="u-svg-content" viewBox="0 0 409.6 409.6" x="0px" y="0px" id="svg-c574" data-color="rgb(17, 17, 17)"><g>
+                        <g>
+                          <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467    c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                        </g>
+                      </g></svg></div><b>Baskı maliyetinden tasarruf sağlar, böylece qr menü ile dijital ortama menü taşıyarak herhangi menü bastırmak veya güncellemek adına yüksek bedeller ödenmez.</b><br /></li><li><div className="u-list-icon u-text-palette-2-base u-block-6180-18" style={{}}><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" xmlSpace="preserve" className="u-svg-content" viewBox="0 0 409.6 409.6" x="0px" y="0px" id="svg-c574" data-color="rgb(17, 17, 17)"><g>
+                        <g>
+                          <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467    c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                        </g>
+                      </g></svg></div>​<b>Hijyenik kullanım ve temassız kullanım imkanı sağlar, bu sayede elden ele gezen menülere son verilmiş olur ve müşteri memnuniyetinizi arttırabilme imkanınız olur.</b></li><li><div className="u-list-icon u-text-palette-2-base u-block-6180-17" style={{}}><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" xmlSpace="preserve" className="u-svg-content" viewBox="0 0 409.6 409.6" x="0px" y="0px" id="svg-c574" data-color="rgb(17, 17, 17)"><g>
+                        <g>
+                          <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467    c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                        </g>
+                      </g></svg></div><div className="u-list-icon u-text-palette-2-base u-block-6180-20" style={{}}><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" xmlSpace="preserve" className="u-svg-content" viewBox="0 0 409.6 409.6" x="0px" y="0px" id="svg-c574" data-color="rgb(17, 17, 17)"><g>
+                        <g>
+                          <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467    c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                        </g>
+                      </g></svg></div>​<b>Sipariş verebilme özelliği sağlar, böylece müşteriler menüyü görüntülüyerek ister garsona, isterlerse sepetlerine ekleyerek sipariş verebilirler.</b></li><li><div className="u-list-icon u-text-palette-2-base u-block-6180-17" style={{}}><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" xmlSpace="preserve" className="u-svg-content" viewBox="0 0 409.6 409.6" x="0px" y="0px" id="svg-c574" data-color="rgb(17, 17, 17)"><g>
+                        <g>
+                          <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467    c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                        </g>
+                      </g></svg></div><b><b>İşletme Sahibi Masadan, Adrese Teslimat, Gel-Al ve Web Sitelerine Menüyü Entegre Ederek Hemen Sipariş Alırlar.</b><br /></b></li></ul><div className="u-palette-2-base u-shape u-shape-circle u-block-control u-block-6180-13" style={{width: 102, height: 102, backgroundImage: 'none', marginTop: 79, marginRight: 30, marginBottom: 0, marginLeft: 'auto'}} data-block={87} /></div></div>
+          <div className="u-align-center u-container-style u-layout-cell u-right-cell u-size-30 u-block-control ui-draggable ui-droppable u-block-6180-6" style={{minHeight: 671}} data-cell-id={16} data-column-id={11} data-block={88}><div className="u-container-layout u-valign-middle u-block-6180-7" style={{paddingTop: 30, paddingBottom: 30, paddingLeft: 30, paddingRight: 30}} data-container-layout-dom={21}><img className="u-image u-image-contain u-block-control u-block-6180-16" src="Assets/images/-min1.jpg" data-image-width={763} data-image-height={1080} style={{width: 420, height: 577, marginTop: 0, marginBottom: 0, marginLeft: 'auto', marginRight: 'auto'}} data-block={89} /></div></div></div></div></div></div></section>
+  )
+}
+export default WhatsQrMenu;
