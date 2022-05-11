@@ -1,18 +1,26 @@
 import React, {useContext} from "react";
 import SuperAdminFirmaEkle from "./SuperAdminFirmaEkle";
-import SuperAdminFirmaSil from "./SuperAdminFirmaSil";
+import SuperAdminFirmaIslemler from "./SuperAdminFirmaIslemler";
 import SuperAdminFirmaDuzenle from "./SuperAdminFirmaDuzenle";
 import SuperAdminFirmaAyrintilar from "./SuperAdminFirmaAyrintilar";
+import SuperAdminSilinmisFirmalar from "./SuperAdminSilinmisFirmalar";
 import SuperAdminKategoriEkle from "./SuperAdminKategoriEkle";
 import SuperAdminKategoriSil from "./SuperAdminKategoriSil";
 import { SuperVisibleContext } from "../contexts/SuperVisibleContext";
 import SuperAdminKategoriDuzenle from "./SuperAdminKategoriDuzenle";
+import SuperAdminFirmaUyeEkle from "./SuperAdminFirmaUyeEkle";
+import SuperAdminFirmaUyeSil from "./SuperAdminFirmaUyeSil";
+import SuperAdminUyeEkle from "./SuperAdminUyeEkle";
+import SuperAdminUyeSil from "./SuperAdminUyeSil";
+import SuperAdminUyeListele from "./SuperAdminUyeListele";
 import { ApiContext } from "../contexts/ApiContext";
 import Cookies from 'universal-cookie';
 
 const SuperAdminMain = () => {
   const [VisibleAllFalse,FirmaEkleVisible, setFirmaEkleVisible,FirmaSilVisible, setFirmaSilVisible,FirmaDuzenleVisible, setFirmaDuzenleVisible
-    ,KategoriEkleVisible, setKategoriEkleVisible,KategoriSilVisible, setKategoriSilVisible,KategoriDuzenleVisible, setKategoriDuzenleVisible,FirmaAyrintilarVisible, setFirmaAyrintilarVisible] = useContext(SuperVisibleContext);
+    ,KategoriEkleVisible, setKategoriEkleVisible,KategoriSilVisible, setKategoriSilVisible,KategoriDuzenleVisible, setKategoriDuzenleVisible,FirmaAyrintilarVisible, setFirmaAyrintilarVisible
+,SilinmisFirmalarVisible, setSilinmisFirmalarVisible,FirmaUyeEkleVisible,setFirmaUyeEkleVisible,FirmaUyeSilVisible,setFirmaUyeSilVisible,UyeEkleVisible,setUyeEkleVisible,UyeSilVisible,setUyeSilVisible,
+UyeListeleVisible,setUyeListeleVisible] = useContext(SuperVisibleContext);
     const [UserName, setUserName, Password, setPassword, Token, setToken, dataToken,passwordErrorVis,setpasswordErrorVis,cookies,FirmaAdi,setFirmaAdi,FirmaMSayisi,setFirmaMSayisi,firmaAc,firmalariGetir,FirmaList,setFirmaList] = useContext(ApiContext);
 const FirmaEkleOnClick=()=>{
   VisibleAllFalse();
@@ -24,9 +32,9 @@ const FirmaIslemleriOnClick=()=>{
   setFirmaSilVisible(true);
  
 }
-const FirmaDuzenleOnClick=()=>{
+const SilinmisFirmalarOnClick=()=>{
   VisibleAllFalse();
-  setFirmaDuzenleVisible(true);
+  setSilinmisFirmalarVisible(true);
 }
 const KategoriEkleOnClick=()=>{
   VisibleAllFalse();
@@ -44,7 +52,27 @@ const FirmaAyrintilarOnClick=()=>{
   VisibleAllFalse();
   setFirmaAyrintilarVisible(true);
 }
-
+const FirmaUyeEkleOnClick=()=>{
+  firmalariGetir();
+  VisibleAllFalse();
+  setFirmaUyeEkleVisible(true);
+}
+const FirmaUyeSilOnClick=()=>{
+  VisibleAllFalse();
+  setFirmaUyeSilVisible(true);
+}
+const UyeEkleOnClick=()=>{
+  VisibleAllFalse();
+  setUyeEkleVisible(true);
+}
+const UyeSilOnClick=()=>{
+  VisibleAllFalse();
+  setUyeSilVisible(true);
+}
+const UyeListeleOnClick=()=>{
+  VisibleAllFalse();
+  setUyeListeleVisible(true);
+}
 
 
   return (
@@ -71,7 +99,30 @@ const FirmaAyrintilarOnClick=()=>{
             <li>
               <a onClick={FirmaIslemleriOnClick}>Firma İşlemleri</a>
             </li>
+            <li>
+              <a onClick={SilinmisFirmalarOnClick}>Silinmiş Firma İşlemleri</a>
+            </li>
+            <li>
+            <a onClick={FirmaUyeEkleOnClick}>Firmaya Üye Ekle</a>
+            </li>
+            <li>
+            <a onClick={FirmaUyeSilOnClick}>Firmadan Üye Sil</a>
+            </li>
+          </ul>
+        </li>
+        <li className="active">
+          <a href="#categorySubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Üye İşlemleri</a>
+          <ul className="collapse list-unstyled" id="categorySubmenu">
             
+            <li>
+              <a onClick={UyeEkleOnClick}>Üye Ekle</a>
+            </li>
+            <li>
+              <a onClick={UyeSilOnClick}>Üye Sil</a>
+            </li>
+            <li>
+              <a onClick={UyeListeleOnClick}>Üyeleri Listele</a>
+            </li>
           </ul>
         </li>
         <li className="active">
@@ -92,6 +143,8 @@ const FirmaAyrintilarOnClick=()=>{
          <a className="active" >{cookies.get('username')}</a>
          
        </li>
+     
+        
        <li>
          <a className="active" >LOGOUT</a>
        </li>
@@ -103,12 +156,18 @@ const FirmaAyrintilarOnClick=()=>{
   </nav>
   {/* Page Content  */}
   {FirmaEkleVisible? <SuperAdminFirmaEkle/>:null}
-  {FirmaSilVisible? <SuperAdminFirmaSil/>:null}
+  {FirmaSilVisible? <SuperAdminFirmaIslemler/>:null}
   {FirmaDuzenleVisible? <SuperAdminFirmaDuzenle/>:null}
   {KategoriSilVisible?<SuperAdminKategoriSil/>:null}
   {KategoriEkleVisible? <SuperAdminKategoriEkle/>:null}
   {KategoriDuzenleVisible? <SuperAdminKategoriDuzenle/>:null}
   {FirmaAyrintilarVisible? <SuperAdminFirmaAyrintilar/>:null}
+  {SilinmisFirmalarVisible? <SuperAdminSilinmisFirmalar/>:null}
+  {FirmaUyeEkleVisible? <SuperAdminFirmaUyeEkle/>:null}
+  {FirmaUyeSilVisible? <SuperAdminFirmaUyeSil/>:null}
+  {UyeEkleVisible? <SuperAdminUyeEkle/>:null}
+  {UyeSilVisible? <SuperAdminUyeSil/>:null}
+  {UyeListeleVisible? <SuperAdminUyeListele/>:null}
   </div>
   
 
