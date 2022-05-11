@@ -6,14 +6,32 @@ import { SuperVisibleContext } from "../contexts/SuperVisibleContext";
 
 
 
+
 const SuperAdminFirmaDuzenle = () => {
-    const [UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList, silinecekIdFirma, setsilinecekIdFirma, firmaSil, firmaAyrinti, FirmaAyrinti, setFirmaAyrinti] = useContext(ApiContext);
+    const [UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList,silinecekIdFirma,setsilinecekIdFirma,firmaSil,firmaAyrinti,FirmaAyrinti, setFirmaAyrinti,
+        FirmaAktifMi,setFirmaAktifMi,FirmaSilinmisMi,setFirmaSilinmisMi,firmaDuzenle] = useContext(ApiContext);
 
     const duzenleClick = (e) => {
         e.preventDefault();
+        firmaDuzenle(e.target.value);
+    }
+    const yfirmaChange=(e)=>{
+        setFirmaAdi(e.target.value);
+    }
+    const ymsayisiChange=(e)=>{
+        setFirmaMSayisi(e.target.value);
     }
     const checkboxDegisti = (e) => {
-        e.preventDefault();
+        
+        console.log(e.target.checked);
+        setFirmaAktifMi(e.target.checked);  
+        
+    }
+    const checkboxDegisti2 = (e) => {
+        
+        console.log(e.target.checked);
+        setFirmaSilinmisMi(e.target.checked); 
+          
         
     }
     return (
@@ -30,22 +48,23 @@ const SuperAdminFirmaDuzenle = () => {
                     
                     <br></br>
                     <label htmlFor="uname"><b>Yeni Firma Adı</b></label>
-                    <input defaultValue={FirmaAyrinti.name} type="text" placeholder="Kategori Adı Giriniz" name="uname" required />
+                    <input onChange={yfirmaChange} defaultValue={FirmaAyrinti.name} type="text" placeholder="Yeni Firma Adı Giriniz" name="uname" required />
                     <label htmlFor="psw"><b>Yeni Firma Masa Sayısı</b></label>
 
-                    <input defaultValue={FirmaAyrinti.deskCount} type="text" placeholder="Firma Masa Sayısı Giriniz" name="uname" required />
+                    <input onChange={ymsayisiChange} defaultValue={FirmaAyrinti.deskCount} type="text" placeholder="Yeni Firma Masa Sayısı Giriniz" name="uname" required />
                     <div>
                         <div className="custom-control custom-switch">
                             <input onChange={checkboxDegisti} type="checkbox" className="custom-control-input" id="customSwitch1" defaultChecked={FirmaAyrinti.isActive}  />
                             <label className="custom-control-label" htmlFor="customSwitch1">Firma aktiflik durumu:</label>
                         </div>
                         <div className="custom-control custom-switch">
-                            <input onChange={checkboxDegisti} type="checkbox" className="custom-control-input" id="customSwitch2" defaultChecked={FirmaAyrinti.isDeleted}/>
+                            <input onChange={checkboxDegisti2} type="checkbox" className="custom-control-input" id="customSwitch2" defaultChecked={FirmaAyrinti.isDeleted}/>
                             <label className="custom-control-label" htmlFor="customSwitch2">Firma silinmişlik durumu:</label>
                         </div>
+                        
                     </div>
 
-                    <button onClick={duzenleClick} type="submit">Düzenle</button>
+                    <button onClick={duzenleClick} value={FirmaAyrinti.id} type="submit">Düzenle</button>
                 </div>
             </form>
         </div>

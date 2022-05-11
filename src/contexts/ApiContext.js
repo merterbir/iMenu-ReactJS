@@ -12,6 +12,8 @@ export const ApiProvider = (props) => {
   const [passwordErrorVis, setpasswordErrorVis] = useState(false);
   const [FirmaAdi, setFirmaAdi] = useState("");
   const [FirmaMSayisi, setFirmaMSayisi] = useState("");
+  const [FirmaAktifMi,setFirmaAktifMi] = useState(false);
+  const [FirmaSilinmisMi,setFirmaSilinmisMi] = useState(false);
   const [FirmaList, setFirmaList] = useState([]);
   const [silinecekIdFirma,setsilinecekIdFirma] =useState("");
   const [FirmaAyrinti, setFirmaAyrinti] = useState([]);
@@ -129,9 +131,36 @@ export const ApiProvider = (props) => {
         console.log(error);
         setFirmaAyrinti(null);
       });
-  }  
+  } 
+  const firmaDuzenle = (id) => {
+    var zaman = new Date();
+    axios.put(url + '/api/Company/'+id, {
+      "id": id,
+      "isDeleted": FirmaSilinmisMi,
+      "isActive": FirmaAktifMi,
+      "createTime": zaman.toLocaleString,
+      "name": FirmaAdi,
+      "deskCount": parseInt(FirmaMSayisi)
+    })
+      .then(function (response) {
+        console.log(response.status)
+        if (response.status === 202) {
+          console.log(response);
+
+
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  
+
+
+
   return (
-    <ApiContext.Provider value={[UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList,silinecekIdFirma,setsilinecekIdFirma,firmaSil,firmaAyrinti,FirmaAyrinti, setFirmaAyrinti]}>
+    <ApiContext.Provider value={[UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList,silinecekIdFirma,setsilinecekIdFirma,firmaSil,firmaAyrinti,FirmaAyrinti, setFirmaAyrinti,
+      FirmaAktifMi,setFirmaAktifMi,FirmaSilinmisMi,setFirmaSilinmisMi,firmaDuzenle]}>
       {props.children}
     </ApiContext.Provider>
 
