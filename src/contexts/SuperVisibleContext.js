@@ -4,7 +4,7 @@ export const SuperVisibleContext = createContext();
 export const SuperVisibleProvider = (props) => {
 
     const [FirmaEkleVisible, setFirmaEkleVisible] = useState(false);
-    const [FirmaSilVisible, setFirmaSilVisible] = useState(false);
+    const [FirmaSilVisible, setFirmaSilVisible] = useState(true);
     const [FirmaDuzenleVisible, setFirmaDuzenleVisible] = useState(false);
     const [KategoriEkleVisible, setKategoriEkleVisible] = useState(false);
     const [KategoriSilVisible, setKategoriSilVisible] = useState(false);
@@ -16,7 +16,9 @@ export const SuperVisibleProvider = (props) => {
     const [UyeEkleVisible,setUyeEkleVisible]= useState(false);
     const [UyeSilVisible,setUyeSilVisible]= useState(false);
     const [UyeListeleVisible,setUyeListeleVisible]= useState(false);
-
+    const [AdminUyeEkleVisible,setAdminUyeEkleVisible]= useState(false);
+    const [SuperAdminUyeEkleVisible,setSuperAdminUyeEkleVisible]= useState(false);
+    const [SuperAdminGarsonEkleVisible,setSuperAdminGarsonEkleVisible]= useState(false);
     const VisibleAllFalse=()=>{
         setFirmaEkleVisible(false);
         setFirmaSilVisible(false);
@@ -31,6 +33,9 @@ export const SuperVisibleProvider = (props) => {
         setUyeListeleVisible(false);
         setUyeEkleVisible(false);
         setUyeSilVisible(false);
+        setAdminUyeEkleVisible(false);
+        setSuperAdminUyeEkleVisible(false);
+        setSuperAdminGarsonEkleVisible(false);
     }
 
    
@@ -38,7 +43,7 @@ export const SuperVisibleProvider = (props) => {
         <SuperVisibleContext.Provider value={[VisibleAllFalse,FirmaEkleVisible, setFirmaEkleVisible,FirmaSilVisible, setFirmaSilVisible,FirmaDuzenleVisible, setFirmaDuzenleVisible
             ,KategoriEkleVisible, setKategoriEkleVisible,KategoriSilVisible, setKategoriSilVisible,KategoriDuzenleVisible, setKategoriDuzenleVisible,FirmaAyrintilarVisible, setFirmaAyrintilarVisible
         ,SilinmisFirmalarVisible, setSilinmisFirmalarVisible,FirmaUyeEkleVisible,setFirmaUyeEkleVisible,FirmaUyeSilVisible,setFirmaUyeSilVisible,UyeEkleVisible,setUyeEkleVisible,UyeSilVisible,setUyeSilVisible,
-        UyeListeleVisible,setUyeListeleVisible]}>
+        UyeListeleVisible,setUyeListeleVisible,AdminUyeEkleVisible,setAdminUyeEkleVisible,SuperAdminUyeEkleVisible,setSuperAdminUyeEkleVisible,SuperAdminGarsonEkleVisible,setSuperAdminGarsonEkleVisible]}>
             {props.children}
         </SuperVisibleContext.Provider>
 

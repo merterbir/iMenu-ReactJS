@@ -10,29 +10,29 @@ import { SuperVisibleContext } from "../contexts/SuperVisibleContext";
 const SuperAdminFirmaDuzenle = () => {
     const [UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList,silinecekIdFirma,setsilinecekIdFirma,firmaSil,firmaAyrinti,FirmaAyrinti, setFirmaAyrinti,
         FirmaAktifMi,setFirmaAktifMi,FirmaSilinmisMi,setFirmaSilinmisMi,firmaDuzenle] = useContext(ApiContext);
-
+     
+    var yeniAd= FirmaAyrinti.name;
+    var yeniMasa= FirmaAyrinti.deskCount;
+    var aktiflikDurum= FirmaAyrinti.isActive;
+    var silinmislikDurum= FirmaAyrinti.isDeleted;
     const duzenleClick = (e) => {
         e.preventDefault();
-        firmaDuzenle(e.target.value);
+        console.log(e.target.value)
+        firmaDuzenle(e.target.value,yeniAd,yeniMasa,aktiflikDurum,silinmislikDurum);
     }
     const yfirmaChange=(e)=>{
-        setFirmaAdi(e.target.value);
+        yeniAd=e.target.value;
     }
     const ymsayisiChange=(e)=>{
-        setFirmaMSayisi(e.target.value);
+        yeniMasa=e.target.value;
     }
-    const checkboxDegisti = (e) => {
-        
+    const checkboxDegisti = (e) => { 
         console.log(e.target.checked);
-        setFirmaAktifMi(e.target.checked);  
-        
+        aktiflikDurum=e.target.checked;       
     }
-    const checkboxDegisti2 = (e) => {
-        
+    const checkboxDegisti2 = (e) => {  
         console.log(e.target.checked);
-        setFirmaSilinmisMi(e.target.checked); 
-          
-        
+        silinmislikDurum=e.target.checked;     
     }
     return (
         <div id="content" className="p-4 p-md-5 pt-5">
@@ -61,7 +61,7 @@ const SuperAdminFirmaDuzenle = () => {
                             <input onChange={checkboxDegisti2} type="checkbox" className="custom-control-input" id="customSwitch2" defaultChecked={FirmaAyrinti.isDeleted}/>
                             <label className="custom-control-label" htmlFor="customSwitch2">Firma silinmişlik durumu:</label>
                         </div>
-                        
+
                     </div>
 
                     <button onClick={duzenleClick} value={FirmaAyrinti.id} type="submit">Düzenle</button>

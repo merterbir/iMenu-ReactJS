@@ -66,7 +66,7 @@ export const ApiProvider = (props) => {
       "createTime": zaman.toLocaleString,
       "name": FirmaAdi,
       "deskCount": parseInt(FirmaMSayisi)
-    })
+    },{headers})
       .then(function (response) {
         console.log(response.status)
         if (response.status === 201) {
@@ -82,7 +82,7 @@ export const ApiProvider = (props) => {
 
   const firmalariGetir = () => {
 
-    axios.get(url + '/api/Company')
+    axios.get(url + '/api/Company',{headers})
       .then(function (response) {
         console.log(response.status)
         if (response.status === 200) {
@@ -104,7 +104,7 @@ export const ApiProvider = (props) => {
   }
   const firmaSil = (id) => {
     
-    axios.delete(url + '/api/Company/'+id)
+    axios.delete(url + '/api/Company/'+id,{headers})
       .then(function (response) {  
         if (response.status === 200) {
           firmalariGetir();
@@ -118,7 +118,7 @@ export const ApiProvider = (props) => {
   }
   const firmaAyrinti = (id) => {
     
-    axios.get(url + '/api/Company/'+id)
+    axios.get(url + '/api/Company/'+id,{headers})
       .then(function (response) { 
         console.log(response.status) 
         if (response.status === 200) {
@@ -132,16 +132,16 @@ export const ApiProvider = (props) => {
         setFirmaAyrinti(null);
       });
   } 
-  const firmaDuzenle = (id) => {
+  const firmaDuzenle = (id,yeniAd,yeniMasa,aktiflikDurum,silinmislikDurum) => {
     var zaman = new Date();
     axios.put(url + '/api/Company/'+id, {
       "id": id,
-      "isDeleted": FirmaSilinmisMi,
-      "isActive": FirmaAktifMi,
+      "isDeleted": silinmislikDurum,
+      "isActive": aktiflikDurum,
       "createTime": zaman.toLocaleString,
-      "name": FirmaAdi,
-      "deskCount": parseInt(FirmaMSayisi)
-    })
+      "name": yeniAd,
+      "deskCount": parseInt(yeniMasa)
+    },{headers})
       .then(function (response) {
         console.log(response.status)
         if (response.status === 202) {
@@ -154,13 +154,89 @@ export const ApiProvider = (props) => {
         console.log(error);
       });
   }
-  
+  const AdminUyeEkle = (mail,sifre,isim,soyisim,telefon,sifreSoru,sifreSoruCevap,ikinciMail,dogumTarihi) => {
+    var zaman = new Date();
+    console.log(cookies.get('token'))
+    axios.post(url + '/api/Authenticate/register-admin',{
+      "email": mail,
+      "password": sifre,
+      "name": isim,
+      "surname": soyisim,
+      "birthday": dogumTarihi,
+      "phoneNumber": telefon,
+      "passwordQuestion": sifreSoru,
+      "passwordAnswer": sifreSoruCevap,
+      "secondEmail": ikinciMail
+    },{headers} )
+      .then(function (response) {
+        console.log(response.status)
+        if (response.status === 200) {
+          console.log(response);
 
 
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  const SuperAdminUyeEkle = (mail,sifre,isim,soyisim,telefon,sifreSoru,sifreSoruCevap,ikinciMail,dogumTarihi) => {
+    var zaman = new Date();
+    console.log(cookies.get('token'))
+    axios.post(url + '/api/Authenticate/register-SAdmin',{
+      "email": mail,
+      "password": sifre,
+      "name": isim,
+      "surname": soyisim,
+      "birthday": dogumTarihi,
+      "phoneNumber": telefon,
+      "passwordQuestion": sifreSoru,
+      "passwordAnswer": sifreSoruCevap,
+      "secondEmail": ikinciMail
+    },{headers} )
+      .then(function (response) {
+        console.log(response.status)
+        if (response.status === 200) {
+          console.log(response);
+
+
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  const GarsonEkle = (mail,sifre,isim,soyisim,telefon,sifreSoru,sifreSoruCevap,ikinciMail,dogumTarihi) => {
+    var zaman = new Date();
+    console.log(cookies.get('token'))
+    axios.post(url + '/api/Authenticate/AddWaiter',{
+      "email": mail,
+      "password": sifre,
+      "name": isim,
+      "surname": soyisim,
+      "birthday": dogumTarihi,
+      "phoneNumber": telefon,
+      "passwordQuestion": sifreSoru,
+      "passwordAnswer": sifreSoruCevap,
+      "secondEmail": ikinciMail
+    },{headers} )
+      .then(function (response) {
+        console.log(response.status)
+        if (response.status === 200) {
+          console.log(response);
+
+
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <ApiContext.Provider value={[UserName, setUserName, Password, setPassword, Token, setToken, dataToken, passwordErrorVis, setpasswordErrorVis, cookies, FirmaAdi, setFirmaAdi, FirmaMSayisi, setFirmaMSayisi, firmaAc, firmalariGetir, FirmaList, setFirmaList,silinecekIdFirma,setsilinecekIdFirma,firmaSil,firmaAyrinti,FirmaAyrinti, setFirmaAyrinti,
-      FirmaAktifMi,setFirmaAktifMi,FirmaSilinmisMi,setFirmaSilinmisMi,firmaDuzenle]}>
+      FirmaAktifMi,setFirmaAktifMi,FirmaSilinmisMi,setFirmaSilinmisMi,firmaDuzenle,AdminUyeEkle,SuperAdminUyeEkle,GarsonEkle]}>
       {props.children}
     </ApiContext.Provider>
 

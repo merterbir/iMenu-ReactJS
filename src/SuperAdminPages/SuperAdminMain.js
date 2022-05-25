@@ -13,14 +13,18 @@ import SuperAdminFirmaUyeSil from "./SuperAdminFirmaUyeSil";
 import SuperAdminUyeEkle from "./SuperAdminUyeEkle";
 import SuperAdminUyeSil from "./SuperAdminUyeSil";
 import SuperAdminUyeListele from "./SuperAdminUyeListele";
+import SuperAdminAdminUyeEkle from "./SuperAdminAdminUyeEkle";
+import SuperAdminSuperAdminUyeEkle from "./SuperAdminSuperAdminUyeEkle";
+import SuperAdminGarsonEkle from "./SuperAdminGarsonEkle";
 import { ApiContext } from "../contexts/ApiContext";
+
 import Cookies from 'universal-cookie';
 
 const SuperAdminMain = () => {
   const [VisibleAllFalse,FirmaEkleVisible, setFirmaEkleVisible,FirmaSilVisible, setFirmaSilVisible,FirmaDuzenleVisible, setFirmaDuzenleVisible
     ,KategoriEkleVisible, setKategoriEkleVisible,KategoriSilVisible, setKategoriSilVisible,KategoriDuzenleVisible, setKategoriDuzenleVisible,FirmaAyrintilarVisible, setFirmaAyrintilarVisible
 ,SilinmisFirmalarVisible, setSilinmisFirmalarVisible,FirmaUyeEkleVisible,setFirmaUyeEkleVisible,FirmaUyeSilVisible,setFirmaUyeSilVisible,UyeEkleVisible,setUyeEkleVisible,UyeSilVisible,setUyeSilVisible,
-UyeListeleVisible,setUyeListeleVisible] = useContext(SuperVisibleContext);
+UyeListeleVisible,setUyeListeleVisible,AdminUyeEkleVisible,setAdminUyeEkleVisible,SuperAdminUyeEkleVisible,setSuperAdminUyeEkleVisible,SuperAdminGarsonEkleVisible,setSuperAdminGarsonEkleVisible] = useContext(SuperVisibleContext);
     const [UserName, setUserName, Password, setPassword, Token, setToken, dataToken,passwordErrorVis,setpasswordErrorVis,cookies,FirmaAdi,setFirmaAdi,FirmaMSayisi,setFirmaMSayisi,firmaAc,firmalariGetir,FirmaList,setFirmaList] = useContext(ApiContext);
 const FirmaEkleOnClick=()=>{
   VisibleAllFalse();
@@ -34,6 +38,7 @@ const FirmaIslemleriOnClick=()=>{
 }
 const SilinmisFirmalarOnClick=()=>{
   VisibleAllFalse();
+  firmalariGetir();
   setSilinmisFirmalarVisible(true);
 }
 const KategoriEkleOnClick=()=>{
@@ -73,8 +78,18 @@ const UyeListeleOnClick=()=>{
   VisibleAllFalse();
   setUyeListeleVisible(true);
 }
-
-
+const AdminUyeEkleOnClick=()=>{
+  VisibleAllFalse();
+  setAdminUyeEkleVisible(true);
+}
+const SuperAdminUyeEkleOnClick=()=>{
+  VisibleAllFalse();
+  setSuperAdminUyeEkleVisible(true);
+}
+const GarsonEkleOnClick=()=>{
+  VisibleAllFalse();
+  setSuperAdminGarsonEkleVisible(true);
+}
   return (
  
     
@@ -113,7 +128,15 @@ const UyeListeleOnClick=()=>{
         <li className="active">
           <a href="#categorySubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Üye İşlemleri</a>
           <ul className="collapse list-unstyled" id="categorySubmenu">
-            
+          <li>
+              <a onClick={SuperAdminUyeEkleOnClick}>Super Admin Üye Ekle</a>
+            </li>
+          <li>
+              <a onClick={AdminUyeEkleOnClick}>Admin Üye Ekle</a>
+            </li>
+            <li>
+              <a onClick={GarsonEkleOnClick}>Garson Ekle</a>
+            </li>
             <li>
               <a onClick={UyeEkleOnClick}>Üye Ekle</a>
             </li>
@@ -168,6 +191,9 @@ const UyeListeleOnClick=()=>{
   {UyeEkleVisible? <SuperAdminUyeEkle/>:null}
   {UyeSilVisible? <SuperAdminUyeSil/>:null}
   {UyeListeleVisible? <SuperAdminUyeListele/>:null}
+  {AdminUyeEkleVisible? <SuperAdminAdminUyeEkle/>:null}
+  {SuperAdminUyeEkleVisible? <SuperAdminSuperAdminUyeEkle/>:null}
+  {SuperAdminGarsonEkleVisible? <SuperAdminGarsonEkle/>:null}
   </div>
   
 

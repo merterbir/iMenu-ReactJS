@@ -20,6 +20,7 @@ const SuperAdminFirmaIslemler = () => {
     const silButton = (e) => {
         e.preventDefault();
        firmaSil(e.target.value);
+
         
     }
     const ayrintiGetir = (e) => {
@@ -35,6 +36,7 @@ const SuperAdminFirmaIslemler = () => {
         firmaAyrinti(e.target.value);
         setFirmaAdi(FirmaAyrinti.name);
         setFirmaMSayisi(FirmaAyrinti.deskCount);
+        console.log(e.target.value); 
         sleep(200).then(r=>{
             VisibleAllFalse();
             setFirmaDuzenleVisible(true);
@@ -61,14 +63,16 @@ const SuperAdminFirmaIslemler = () => {
                             </tr>
                         </thead>
                         <tbody>
+                            
                             {FirmaList.map(Firma => ( 
-                                <tr key={Firma.id}>
+                                (Firma.isDeleted?null:<tr key={Firma.id}>
                                     <td>{Firma.name}</td>
                                     <td>{Firma.deskCount}</td>
-                                    <td><button style={{backgroundColor: 'grey'}} onClick={ayrintiGetir}  value={Firma.id}>Ayrıntılar <i class="bi bi-body-text"></i></button></td>
-                                    <td><button  onClick={duzenleClick} value={Firma.id}>Düzenle <i class="bi bi-pencil-square"></i></button></td>
-                                    <td><button style={{backgroundColor: 'red'}}  onClick={silButton} value={Firma.id}>Sil <i class="bi bi-trash-fill"></i></button></td>
-                                </tr>
+                                    <td><button style={{backgroundColor: 'grey'}} onClick={ayrintiGetir}  value={Firma.id}>Ayrıntılar <i className="bi bi-body-text"></i></button></td>
+                                    <td><button  onClick={duzenleClick} value={Firma.id}>Düzenle <i className="bi bi-pencil-square"></i></button></td>
+                                    <td><button style={{backgroundColor: 'red'}}  onClick={silButton} value={Firma.id}>Sil <i className="bi bi-trash-fill"></i></button></td>
+                                </tr>)
+                                
                             ))}
                         </tbody>
                     </table>
